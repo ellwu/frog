@@ -9,14 +9,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.shnlng.frog.domain.Binding;
 import com.shnlng.frog.domain.BindingRepo;
-import com.shnlng.frog.domain.Count;
 import com.shnlng.frog.domain.CountRepo;
-import com.shnlng.frog.domain.Merchant;
 import com.shnlng.frog.domain.MerchantRepo;
-import com.shnlng.frog.domain.Target;
 import com.shnlng.frog.domain.TargetRepo;
+import com.shnlng.frog.domain.entity.BindingEo;
+import com.shnlng.frog.domain.entity.CountEo;
+import com.shnlng.frog.domain.entity.MerchantEo;
+import com.shnlng.frog.domain.entity.TargetEo;
 import com.shnlng.frog.util.IdGen;
 import com.shnlng.frog.web.message.TalkReq;
 import com.shnlng.frog.web.message.TalkReqCount;
@@ -24,7 +24,7 @@ import com.shnlng.frog.web.message.TalkResp;
 import com.shnlng.frog.web.message.TalkRespItem;
 
 @Service
-public class TalkService {
+public class TalkSo {
 
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
@@ -38,15 +38,15 @@ public class TalkService {
 	private BindingRepo bRepo;
 	
 	@Autowired
-	private ResourceService rSo;
+	private ResourceSo rSo;
 
 	public void saveCounts(TalkReq talkReq) {
-		List<Count> countsList = new ArrayList<Count>();
+		List<CountEo> countsList = new ArrayList<CountEo>();
 		Date today = new Date();
 
 		for (TalkReqCount _c : talkReq.getCounts()) {
 
-			Count c = new Count();
+			CountEo c = new CountEo();
 
 			c.setCountId(IdGen.id32());
 			c.setDeviceId(talkReq.getDid());
@@ -74,13 +74,13 @@ public class TalkService {
 	public TalkResp replyTalk(TalkReq talkReq){
 		TalkResp resp = new TalkResp();
 		
-		Binding b = bRepo.findByDeviceId(talkReq.getDid());
+		BindingEo b = bRepo.findByDeviceId(talkReq.getDid());
 		
 		if(b == null){
 			return null;
 		}
 		
-		Merchant m = mRepo.findOne(b.getMerchantId());
+		MerchantEo m = mRepo.findOne(b.getMerchantId());
 		
 		if(m == null){
 			return null;
@@ -90,13 +90,13 @@ public class TalkService {
 		resp.setMmaxitems(10);
 		resp.setMname(m.getName());
 		
-		List<Target> targets = tRepo.findByMerchantId(m.getId(), new Date());
+		List<TargetEo> targets = tRepo.findByMerchantId(m.getId(), new Date());
 		
 		if(targets != null && targets.size() > 0){
 
 			List<TalkRespItem> items = new ArrayList<TalkRespItem>();
 			
-			for(Target _t : targets){
+			for(TargetEo _t : targets){
 				TalkRespItem i = new TalkRespItem();
 				
 				i.setRid(_t.getResourceId());

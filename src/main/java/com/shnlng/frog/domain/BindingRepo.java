@@ -4,8 +4,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-public interface BindingRepo extends PagingAndSortingRepository<Binding, String>{
+import com.shnlng.frog.domain.entity.BindingEo;
+
+public interface BindingRepo extends PagingAndSortingRepository<BindingEo, String>{
 	
-	@Query("select b from Binding b where b.deviceId = :deviceId and b.deleteFlag = 0 and b.disableFlag = 0 and b.status = 1")
-	Binding findByDeviceId(@Param("deviceId") String deviceId);
+	@Query("select b from BindingEo b where b.deviceId = :deviceId and b.deleteFlag = 0 and b.disableFlag = 0 and b.status = 1")
+	BindingEo findByDeviceId(@Param("deviceId") String deviceId);
 }

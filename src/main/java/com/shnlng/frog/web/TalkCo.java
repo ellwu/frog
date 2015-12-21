@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.shnlng.frog.service.TalkService;
+import com.shnlng.frog.service.TalkSo;
 import com.shnlng.frog.web.message.TalkReq;
 import com.shnlng.frog.web.message.TalkResp;
 
@@ -17,7 +17,7 @@ public class TalkCo {
 	private static final Logger logger = Logger.getLogger(TalkCo.class);
 	
 	@Autowired
-	private TalkService talkSo;
+	private TalkSo talkSo;
 
 	@RequestMapping(value = "/talk", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody

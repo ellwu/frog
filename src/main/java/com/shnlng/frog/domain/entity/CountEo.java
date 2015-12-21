@@ -1,4 +1,4 @@
-package com.shnlng.frog.domain;
+package com.shnlng.frog.domain.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "t_counts")
-public class Count implements Serializable {
+public class CountEo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

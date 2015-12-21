@@ -2,6 +2,8 @@ package com.shnlng.frog.domain;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface MerchantRepo extends PagingAndSortingRepository<Merchant, String>{
+import com.shnlng.frog.domain.entity.MerchantEo;
+
+public interface MerchantRepo extends PagingAndSortingRepository<MerchantEo, String>{
 
 }

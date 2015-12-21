@@ -1,4 +1,4 @@
-package com.shnlng.frog.domain;
+package com.shnlng.frog.domain.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,43 +11,30 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "t_targets")
-public class Target implements Serializable {
+@Table(name = "t_bindings")
+public class BindingEo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "target_id")
+	@Column(name = "binding_id")
 	private String id;
 
-	@Column(name = "target_sn")
-	private String sn;
+	@Column(name = "binding_device_id")
+	private String deviceId;
 
-	@Column(name = "target_merchant_id")
+	@Column(name = "binding_merchant_id")
 	private String merchantId;
-	
-	@Column(name = "target_resource_id")
-	private String resourceId;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	@Column(name = "target_begin_time")
-	private Date beginTime;
+	@Column(name = "binding_bind_time")
+	private Date bindTime;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	@Column(name = "target_end_time")
-	private Date endTime;	
+	@Column(name = "binding_release_time")
+	private Date releaseTime;
 
-	@Column(name = "target_status")
-	private int status;	
-
-	@Column(name = "target_desc")
-	private String desc;	
-
-	@Column(name = "target_play_sequence")
-	private int playSequence;		
-
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	@Column(name = "target_ban_time")
-	private Date banTime;
+	@Column(name = "binding_status")
+	private int status;
 
 	@Column(name = "delete_flag")
 	private int deleteFlag;
@@ -80,12 +67,12 @@ public class Target implements Serializable {
 		this.id = id;
 	}
 
-	public String getSn() {
-		return sn;
+	public String getDeviceId() {
+		return deviceId;
 	}
 
-	public void setSn(String sn) {
-		this.sn = sn;
+	public void setDeviceId(String deviceId) {
+		this.deviceId = deviceId;
 	}
 
 	public String getMerchantId() {
@@ -96,28 +83,20 @@ public class Target implements Serializable {
 		this.merchantId = merchantId;
 	}
 
-	public String getResourceId() {
-		return resourceId;
+	public Date getBindTime() {
+		return bindTime;
 	}
 
-	public void setResourceId(String resourceId) {
-		this.resourceId = resourceId;
+	public void setBindTime(Date bindTime) {
+		this.bindTime = bindTime;
 	}
 
-	public Date getBeginTime() {
-		return beginTime;
+	public Date getReleaseTime() {
+		return releaseTime;
 	}
 
-	public void setBeginTime(Date beginTime) {
-		this.beginTime = beginTime;
-	}
-
-	public Date getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public void setReleaseTime(Date releaseTime) {
+		this.releaseTime = releaseTime;
 	}
 
 	public int getStatus() {
@@ -126,30 +105,6 @@ public class Target implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
-	}
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-	public int getPlaySequence() {
-		return playSequence;
-	}
-
-	public void setPlaySequence(int playSequence) {
-		this.playSequence = playSequence;
-	}
-
-	public Date getBanTime() {
-		return banTime;
-	}
-
-	public void setBanTime(Date banTime) {
-		this.banTime = banTime;
 	}
 
 	public int getDeleteFlag() {
@@ -207,6 +162,6 @@ public class Target implements Serializable {
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
 	}
-	
-	
+
 }
+
