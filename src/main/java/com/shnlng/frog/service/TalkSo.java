@@ -11,10 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.shnlng.frog.domain.BindingRepo;
 import com.shnlng.frog.domain.CountRepo;
+import com.shnlng.frog.domain.DeviceRepo;
 import com.shnlng.frog.domain.MerchantRepo;
 import com.shnlng.frog.domain.TargetRepo;
 import com.shnlng.frog.domain.entity.BindingEo;
 import com.shnlng.frog.domain.entity.CountEo;
+import com.shnlng.frog.domain.entity.DeviceEo;
 import com.shnlng.frog.domain.entity.MerchantEo;
 import com.shnlng.frog.domain.entity.TargetEo;
 import com.shnlng.frog.util.IdGen;
@@ -36,6 +38,8 @@ public class TalkSo {
 	private TargetRepo tRepo;
 	@Autowired
 	private BindingRepo bRepo;
+	@Autowired
+	private DeviceRepo dRepo;
 	
 	@Autowired
 	private ResourceSo rSo;
@@ -74,7 +78,13 @@ public class TalkSo {
 	public TalkResp replyTalk(TalkReq talkReq){
 		TalkResp resp = new TalkResp();
 		
-		BindingEo b = bRepo.findByDeviceId(talkReq.getDid());
+		DeviceEo d = dRepo.findBySn(talkReq.getDid());
+		
+		if(d == null){
+			return null;
+		}
+		
+		BindingEo b = bRepo.findByDeviceId(d.getId());
 		
 		if(b == null){
 			return null;
