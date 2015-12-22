@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shnlng.frog.service.TalkSo;
@@ -15,15 +14,15 @@ import com.shnlng.frog.web.message.TalkResp;
 @Controller
 public class TalkCo {
 	private static final Logger logger = Logger.getLogger(TalkCo.class);
-	
+
 	@Autowired
 	private TalkSo talkSo;
 
-	@RequestMapping(value = "/talk", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/talk")
 	@ResponseBody
 	public TalkResp talk(@RequestBody TalkReq talkReq) {
 		logger.debug("enter talk");
-		
+
 		TalkResp resp = null;
 
 		boolean talkReqNeedProcess = talkReq != null;
@@ -35,7 +34,7 @@ public class TalkCo {
 			if (hasCounts) {
 				talkSo.saveCounts(talkReq);
 			}
-			
+
 			resp = talkSo.replyTalk(talkReq);
 		}
 
@@ -43,5 +42,4 @@ public class TalkCo {
 		return resp;
 	}
 
-	
 }

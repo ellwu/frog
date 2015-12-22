@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 
 @Service
 public class ResourceSo {
-	@Value("${forg.resource.clusters}")
+	@Value("${frog.resource.clusters}")
 	private String clusters;
 
 	public List<String> popUrls(String resourceId) {
