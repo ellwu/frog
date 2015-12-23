@@ -10,10 +10,13 @@ public class VersionSo {
 	@Value("${frog.app.current.version}")
 	private String currentVersion;
 	
+	@Value("${frog.app.current.version.name}")
+	private String currentVersionName;
+	
 	@Value("${frog.app.repository.url}")
 	private String repoUrl;
 	
 	public Version currentVersion(){
-		return new Version(currentVersion, repoUrl + currentVersion);
+		return new Version(currentVersion, currentVersionName, repoUrl + currentVersion);
 	}
 }
