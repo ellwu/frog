@@ -29,7 +29,8 @@ import com.shnlng.frog.web.message.TalkRespItem;
 public class TalkSo {
 
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
+	private static final SimpleDateFormat DATE2_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+	
 	@Autowired
 	private CountRepo cRepo;
 	@Autowired
@@ -99,6 +100,7 @@ public class TalkSo {
 		resp.setMid(m.getId());
 		resp.setMmaxitems(10);
 		resp.setMname(m.getName());
+		resp.setDate(DATE2_FORMAT.format(new Date()));
 		
 		List<TargetEo> targets = tRepo.findByMerchantId(m.getId(), new Date());
 		

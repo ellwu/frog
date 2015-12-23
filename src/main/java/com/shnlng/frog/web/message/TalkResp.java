@@ -8,6 +8,7 @@ public class TalkResp implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String mid;
+	private String date;
 	private String mname;
 	private int mmaxitems;
 	private List<TalkRespItem> items;
@@ -42,6 +43,14 @@ public class TalkResp implements Serializable {
 
 	public void setItems(List<TalkRespItem> items) {
 		this.items = items;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 }
