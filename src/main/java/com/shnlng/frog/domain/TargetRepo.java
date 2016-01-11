@@ -11,6 +11,6 @@ import com.shnlng.frog.domain.entity.TargetEo;
 
 public interface TargetRepo extends PagingAndSortingRepository<TargetEo, String> {
 
-	@Query("select t from TargetEo t where t.merchantId = :merchantId and t.status = 1 and t.beginTime <= :date and t.endTime >= :date")
+	@Query("select t from TargetEo t where t.merchantId = :merchantId and t.status = 1 and t.deleteFlag = 0 and t.disableFlag = 0 and t.beginTime <= :date and t.endTime >= :date")
 	List<TargetEo> findByMerchantId(@Param("merchantId") String merchantId, @Param("date") Date date);
 }
