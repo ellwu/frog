@@ -36,6 +36,9 @@ public class MerchantEo implements Serializable {
 
 	@Column(name = "merchant_level")
 	private int level;
+	
+	@Column(name = "merchant_max_targets")
+	private int maxTargets;
 
 	@Column(name = "merchant_contact_person")
 	private String contactPerson;
@@ -214,6 +217,14 @@ public class MerchantEo implements Serializable {
 
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
+	}
+
+	public int getMaxTargets() {
+		return maxTargets;
+	}
+
+	public void setMaxTargets(int maxTargets) {
+		this.maxTargets = maxTargets;
 	}
 
 }

@@ -98,7 +98,7 @@ public class TalkSo {
 		}
 		
 		resp.setMid(m.getId());
-		resp.setMmaxitems(10);
+		resp.setMmaxitems(m.getMaxTargets());
 		resp.setMname(m.getName());
 		resp.setDate(DATE2_FORMAT.format(new Date()));
 		
