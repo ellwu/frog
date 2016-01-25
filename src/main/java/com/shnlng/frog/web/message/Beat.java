@@ -8,7 +8,7 @@ public class Beat implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private static SimpleDateFormat DATE_FORMATE = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	private static SimpleDateFormat DATE_FORMATE = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	private String time;
 
