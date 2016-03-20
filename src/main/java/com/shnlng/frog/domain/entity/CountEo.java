@@ -23,6 +23,12 @@ public class CountEo implements Serializable {
 	@Column(name = "device_id")
 	private String deviceId;
 	
+	@Column(name = "merchant_id")
+	private String merchantId;
+	
+	@Column(name = "adver_id")
+	private String adverId;
+	
 	@Column(name = "resource_id")
 	private String resourceId;
 	
@@ -173,6 +179,22 @@ public class CountEo implements Serializable {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+
+	public String getMerchantId() {
+		return merchantId;
+	}
+
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
+	}
+
+	public String getAdverId() {
+		return adverId;
+	}
+
+	public void setAdverId(String adverId) {
+		this.adverId = adverId;
 	}
 
 }

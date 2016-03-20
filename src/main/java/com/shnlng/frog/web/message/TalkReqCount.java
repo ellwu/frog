@@ -7,6 +7,24 @@ public class TalkReqCount implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String rid;
+	private String aid;
+	private String mid;
+	public String getAid() {
+		return aid;
+	}
+
+	public void setAid(String aid) {
+		this.aid = aid;
+	}
+
+	public String getMid() {
+		return mid;
+	}
+
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+
 	private int c;
 	private int t;
 	private String ct;

@@ -58,6 +58,8 @@ public class TalkSo {
 			c.setResourceId(_c.getRid());
 			c.setCount(_c.getC());
 			c.setTime(_c.getT());
+			c.setAdverId(_c.getAid());
+			c.setMerchantId(_c.getMid());
 
 			try {
 				c.setCountTime(DATE_FORMAT.parse(_c.getCt()));
