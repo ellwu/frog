@@ -1,0 +1,1 @@
+<h1>Error when redirecting to merchant's website</h1>

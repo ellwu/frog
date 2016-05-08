@@ -9,6 +9,7 @@ public class TalkRespItem implements Serializable {
 
 	private String rid;
 	private List<String> urls;
+	private String echo;
 	private String aid;
 	private int s;
 
@@ -42,6 +43,14 @@ public class TalkRespItem implements Serializable {
 
 	public void setS(int s) {
 		this.s = s;
+	}
+
+	public String getEcho() {
+		return echo;
+	}
+
+	public void setEcho(String echo) {
+		this.echo = echo;
 	}
 
 }

@@ -116,6 +116,7 @@ public class TalkSo {
 				i.setRid(_t.getResourceId());
 				i.setS(_t.getPlaySequence());
 				i.setUrls(rSo.popUrls(_t.getResourceId()));
+				i.setEcho(rSo.echoUrl(_t.getResourceId()));
 				
 				items.add(i);
 			}
