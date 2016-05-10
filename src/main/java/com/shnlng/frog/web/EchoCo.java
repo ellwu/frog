@@ -19,7 +19,7 @@ public class EchoCo {
 	private ResourceSo rSo;
 
 	@RequestMapping(value = "/echo")
-	public String beat(HttpServletRequest req, HttpServletResponse resp) {
+	public String echo(HttpServletRequest req, HttpServletResponse resp) {
 		
 		String rid = req.getParameter("rid");
 		
@@ -28,6 +28,8 @@ public class EchoCo {
 		if(StringUtils.isEmpty(redirectUrl)){
 			return "echoError";
 		}
+		
+		rSo.saveQrCount(rid, redirectUrl);
 		
 		try {
 			resp.sendRedirect(redirectUrl);

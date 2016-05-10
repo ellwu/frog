@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.shnlng.frog.domain.QrCountRepo;
 import com.shnlng.frog.domain.ResourceRepo;
+import com.shnlng.frog.domain.entity.QrCountEo;
 import com.shnlng.frog.domain.entity.ResourceEo;
+import com.shnlng.frog.util.IdGen;
 
 @Service
 public class ResourceSo {
@@ -21,6 +24,19 @@ public class ResourceSo {
 	
 	@Autowired
 	private ResourceRepo rRepo;
+	
+	@Autowired
+	private QrCountRepo qrCntRepo;
+	
+	public void saveQrCount(String resourceId, String redirectUrl){
+		
+		QrCountEo qc = new QrCountEo();
+		qc.setId(IdGen.id32());
+		qc.setResourceId(resourceId);
+		qc.setQrUrl(redirectUrl);
+		
+		qrCntRepo.save(qc);
+	}
 	
 	public String getRedirectUrl(String resourceId){
 		ResourceEo r = rRepo.findOne(resourceId);
