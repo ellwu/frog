@@ -18,6 +18,7 @@ import com.shnlng.frog.domain.entity.BindingEo;
 import com.shnlng.frog.domain.entity.CountEo;
 import com.shnlng.frog.domain.entity.DeviceEo;
 import com.shnlng.frog.domain.entity.MerchantEo;
+import com.shnlng.frog.domain.entity.ResourceEo;
 import com.shnlng.frog.domain.entity.TargetEo;
 import com.shnlng.frog.util.IdGen;
 import com.shnlng.frog.web.message.TalkReq;
@@ -110,13 +111,18 @@ public class TalkSo {
 
 			List<TalkRespItem> items = new ArrayList<TalkRespItem>();
 			
+			ResourceEo r = null;
+			
 			for(TargetEo _t : targets){
 				TalkRespItem i = new TalkRespItem();
+				
+				r = rSo.getrRepo().findOne(_t.getResourceId());
 				
 				i.setRid(_t.getResourceId());
 				i.setS(_t.getPlaySequence());
 				i.setUrls(rSo.popUrls(_t.getResourceId()));
 				i.setEcho(rSo.echoUrl(_t.getResourceId()));
+				i.setAid(r.getAdverId());
 				
 				items.add(i);
 			}

@@ -39,7 +39,7 @@ public class ResourceSo {
 	}
 	
 	public String getRedirectUrl(String resourceId){
-		ResourceEo r = rRepo.findOne(resourceId);
+		ResourceEo r = getrRepo().findOne(resourceId);
 		
 		if(r != null){
 			return r.getRedirectUrl();
@@ -68,5 +68,13 @@ public class ResourceSo {
 			}
 		}
 		return urls;
+	}
+
+	public ResourceRepo getrRepo() {
+		return rRepo;
+	}
+
+	public void setrRepo(ResourceRepo rRepo) {
+		this.rRepo = rRepo;
 	}
 }
