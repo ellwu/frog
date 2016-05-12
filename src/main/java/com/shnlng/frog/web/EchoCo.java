@@ -22,6 +22,7 @@ public class EchoCo {
 	public String echo(HttpServletRequest req, HttpServletResponse resp) {
 		
 		String rid = req.getParameter("rid");
+		String mid = req.getParameter("mid");
 		
 		String redirectUrl = rSo.getRedirectUrl(rid);
 		
@@ -29,7 +30,7 @@ public class EchoCo {
 			return "echoError";
 		}
 		
-		rSo.saveQrCount(rid, redirectUrl);
+		rSo.saveQrCount(rid, mid, redirectUrl);
 		
 		try {
 			resp.sendRedirect(redirectUrl);

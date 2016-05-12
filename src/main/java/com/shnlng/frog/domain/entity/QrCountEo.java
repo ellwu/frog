@@ -22,6 +22,9 @@ public class QrCountEo implements Serializable {
 	@Column(name = "resource_id")
 	private String resourceId;
 	
+	@Column(name = "merchant_id")
+	private String merchantId;
+	
 	@Column(name = "qr_url")
 	private String qrUrl;
 
@@ -104,6 +107,14 @@ public class QrCountEo implements Serializable {
 
 	public void setQrUrl(String qrUrl) {
 		this.qrUrl = qrUrl;
+	}
+
+	public String getMerchantId() {
+		return merchantId;
+	}
+
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
 	}
 
 }

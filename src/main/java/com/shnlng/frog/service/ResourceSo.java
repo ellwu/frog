@@ -1,6 +1,7 @@
 package com.shnlng.frog.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,14 @@ public class ResourceSo {
 	@Autowired
 	private QrCountRepo qrCntRepo;
 	
-	public void saveQrCount(String resourceId, String redirectUrl){
+	public void saveQrCount(String resourceId, String merchantId, String redirectUrl){
 		
 		QrCountEo qc = new QrCountEo();
 		qc.setId(IdGen.id32());
 		qc.setResourceId(resourceId);
+		qc.setMerchantId(merchantId);
 		qc.setQrUrl(redirectUrl);
+		qc.setCreationTime(new Date());
 		
 		qrCntRepo.save(qc);
 	}
@@ -48,8 +51,10 @@ public class ResourceSo {
 		return null;
 	}
 	
-	public String echoUrl(String resourceId){
-		return this.echoUrl + resourceId;
+	public String echoUrl(String resourceId, String merchantId){
+		StringBuffer sb = new StringBuffer();
+		sb.append(this.echoUrl).append("?rid=").append(resourceId).append("&mid=").append(merchantId);
+		return sb.toString();
 	}
 
 	public List<String> popUrls(String resourceId) {
