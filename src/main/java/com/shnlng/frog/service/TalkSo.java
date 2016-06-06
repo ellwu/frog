@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.shnlng.frog.domain.BindingRepo;
 import com.shnlng.frog.domain.CountRepo;
@@ -121,7 +122,12 @@ public class TalkSo {
 				i.setRid(_t.getResourceId());
 				i.setS(_t.getPlaySequence());
 				i.setUrls(rSo.popUrls(_t.getResourceId()));
-				i.setEcho(rSo.echoUrl(_t.getResourceId(), m.getId()));
+				
+				if(!StringUtils.isEmpty(r.getRedirectUrl())){
+					i.setEcho(rSo.echoUrl(_t.getResourceId(), m.getId()));
+				}else{
+					i.setEcho("");
+				}
 				i.setAid(r.getAdverId());
 				
 				items.add(i);
